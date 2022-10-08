@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>DigitRecognizer</title>
+
+
+        <!-- FontAwesome -->
+        <script src="https://kit.fontawesome.com/76c40a5f57.js" crossorigin="anonymous"></script>
+        <link href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css" rel=" stylesheet">
+
+
+        <!-- css -->
+        <link rel="stylesheet" href="./app.css">
+
+
+        <!-- jquery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="./app.js"></script>
+    </head>
+
+    <body>
+        <div class="container flexc">
+            <!-- <h1>Digit Recognizer</h1> -->
+
+            <div class="canvas_con">
+                <div class="canvas_title">Draw</div>
+                <!-- <input type="color" class="color_picker">
+                <input type="range" class="line_range" min="1" max="72" value="10">
+                <label class="range_value">10</label> px -->
+                <div class="canvas_wrap">
+                    <img class="canvas_preview_img">
+                    <canvas class="canvas" width="0" height="0"></canvas>
+                </div>
+                <button class="clear_canvas">Erase Canvas <i class="fal fa-eraser"></i></button>
+            </div>
+
+            <div class="clasification_con">
+                <div class="clasification_title">Prediction</div>
+                <div class="clasification_wrap flexc">
+                    <div class="clasification_digit_box flexc" data_content="0">0</div>
+                    <div class="clasification_digit_box flexc" data_content="1">1</div>
+                    <div class="clasification_digit_box flexc" data_content="2">2</div>
+                    <div class="clasification_digit_box flexc" data_content="3">3</div>
+                    <div class="clasification_digit_box flexc" data_content="4">4</div>
+                    <div class="clasification_digit_box flexc" data_content="5">5</div>
+                    <div class="clasification_digit_box flexc" data_content="6">6</div>
+                    <div class="clasification_digit_box flexc" data_content="7">7</div>
+                    <div class="clasification_digit_box flexc" data_content="8">8</div>
+                    <div class="clasification_digit_box flexc" data_content="9">9</div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </body>
+
+</html>
