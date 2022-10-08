@@ -112,9 +112,10 @@ h1 {
 }
 
 
-.clear_canvas {
+.clear_canvas,
+.down_btn {
     background: var(--borC);
-
+    width: fit-content;
     padding: 10px 15px;
     font-family: inherit;
     font-size: 17px;
@@ -139,16 +140,17 @@ h1 {
 }
 
 .clasification_wrap {
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-wrap: wrap;
 
 }
 
 .clasification_digit_box {
     /* background: var(--bgC); */
-    background: #a7a7a7;
-    width: 90px;
-    height: 90px;
+    background: #ececec;
+    width: 130px;
+    height: 130px;
+    margin-right: 20px;
     margin-bottom: 20px;
     font-size: 40px;
     font-weight: 600;

@@ -3,7 +3,7 @@ $(document).ready(() => {
     const context = paintCanvas.getContext('2d');
 
 
-    paintCanvas.width = window.innerWidth - 450
+    paintCanvas.width = window.innerHeight - 160
     paintCanvas.height = window.innerHeight - 160
 
     // context.strokeStyle = "#808080"
@@ -28,11 +28,28 @@ $(document).ready(() => {
     //     context.lineWidth = width;
     // });
 
-    const prvw_img = () => {
-        const img = paintCanvas.toDataURL('image/png')
+    var img_url;
 
-        $(".canvas_preview_img").attr("src", img)
-        console.log(img)
+    var downloadBase64File = (contentBase64) => {
+        const linkSource = contentBase64;
+        const downloadLink = document.createElement('a');
+        document.body.appendChild(downloadLink);
+
+        downloadLink.href = linkSource;
+        downloadLink.target = '_self';
+
+        downloadLink.download = "abc";
+        downloadLink.click();
+    }
+
+    const prvw_img = () => {
+        img_url = paintCanvas.toDataURL('image/png')
+
+        $(".canvas_preview_img").attr("src", img_url)
+        console.log(img_url)
+
+        $(".down_btn").attr("href", img_url)
+        // $(".down_btn").trigger('click')
     }
 
     let isMouseDown = false;
@@ -45,7 +62,6 @@ $(document).ready(() => {
     const stopDrawing = () => {
         isMouseDown = false;
         context.beginPath();
-
     }
 
 
@@ -62,7 +78,6 @@ $(document).ready(() => {
         context.moveTo(x, y);
 
         prvw_img()
-
     }
 
     paintCanvas.addEventListener('mousedown', startDrawing);
@@ -76,4 +91,10 @@ $(document).ready(() => {
         context.clearRect(0, 0, paintCanvas.width, paintCanvas.height);
         prvw_img()
     })
+
+    $(".down_btn").click(() => {
+        context.clearRect(0, 0, paintCanvas.width, paintCanvas.height);
+        prvw_img()
+    })
+
 })
