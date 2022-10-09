@@ -1,5 +1,5 @@
 # <strong style="color:#ffffff;">Digit</strong>Recognizer.
-Digit recognizer is a recognization of handwritten digits using Deep Learning, check it out... 👇👇<br>
+Digit recognizer is a application for recognization of handwritten digits using Deep Learning, check it out... 👇👇<br>
 Made in python, HTML, CSS, jquery, and ajax.
 <br><br>
 
