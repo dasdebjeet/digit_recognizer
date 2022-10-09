@@ -27,8 +27,9 @@ def classify_image():
 
 
     fet_data = util.classify_image(image_data)
-    print(fet_data)
-    response = jsonify("fgfg")
+    # print(fet_data)
+    result={'res': fet_data}
+    response = jsonify(result)
     response.headers.add('Access-Control-Allow-Origin', '*')
 
     # time.sleep(4)
