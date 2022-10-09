@@ -1,18 +1,41 @@
-import numpy as np
-import cv2
-import base64
+from flask import Flask, request, jsonify, render_template
+import time, json
+
+import util
+
+# from flask_cors import CORS
+
+app = Flask(
+    __name__,
+    template_folder='../templates',  # Name of html file folder
+    static_folder='../static'  # Name of directory for static files
+)
 
 
-def load_base64_img():
-    with open('img.txt') as f:
-        return f.read()
-
-def get_cv2_image_from_base64_string(b64str):
-    encoded_data = b64str.split(',')[1]
-    nparr = np.frombuffer(base64.b64decode(encoded_data), np.uint8)
-    img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
-    return img
+@app.route('/')  # What happens when the user visits the site
+def base_page():
+    return render_template(
+        'app.html',  # Template file path, starting from the templates' folder.
+    )
 
 
-n_img = get_cv2_image_from_base64_string(load_base64_img())
-print(n_img.shape)
+@app.route('/classify_image', methods=['GET', 'POST'])
+def classify_image():
+    image_data = request.form['image_data']
+    # image_data = image_data.replace(" ", "")
+    # print(image_data)
+
+
+    fet_data = util.classify_image(image_data)
+    print(fet_data)
+    response = jsonify("fgfg")
+    response.headers.add('Access-Control-Allow-Origin', '*')
+
+    # time.sleep(4)
+    return response
+
+
+if __name__ == "__main__":
+    print("Starting Python Flask Server For Classification")
+    util.loadModel()
+    app.run(port=5000)
