@@ -7,8 +7,8 @@ import util
 
 app = Flask(
     __name__,
-    template_folder='../templates',  # Name of html file folder
-    static_folder='../static'  # Name of directory for static files
+    template_folder='./templates',  # Name of html file folder
+    static_folder='./static'  # Name of directory for static files
 )
 
 
@@ -28,8 +28,11 @@ def classify_image():
 
     fet_data = util.classify_image(image_data)
     # print(fet_data)
-    result={'res': fet_data}
-    response = jsonify(result)
+    digit_arr = []
+    for n in fet_data:
+        digit_arr.append(str(n))
+    # result={'res': fet_data}
+    response = jsonify(digit_arr)
     response.headers.add('Access-Control-Allow-Origin', '*')
 
     # time.sleep(4)

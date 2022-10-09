@@ -3,12 +3,13 @@ $(document).ready(() => {
     const context = paintCanvas.getContext('2d');
 
 
-    paintCanvas.width = window.innerHeight - 160
-    paintCanvas.height = window.innerHeight - 160
+    // paintCanvas.width = window.innerWidth - 630
+    paintCanvas.width = window.innerHeight - 180
+    paintCanvas.height = window.innerHeight - 180
 
     // context.strokeStyle = "#808080"
     context.lineCap = 'round';
-    context.lineWidth = 10
+    context.lineWidth = 8
 
     // const colorPicker = document.querySelector('.color_picker');
 
@@ -28,7 +29,7 @@ $(document).ready(() => {
     //     context.lineWidth = width;
     // });
 
-    var img_url;
+    var img_url, old_url;
 
     // var downloadBase64File = (contentBase64) => {
     //     const linkSource = contentBase64;
@@ -64,26 +65,31 @@ $(document).ready(() => {
         context.beginPath();
 
         // console.log("Stopped! Img-url:", img_url)
-
-        if (img_url) {
+        if (img_url && img_url != old_url) {
             try {
-
                 $.post("http://127.0.0.1:5000/classify_image", {
                     image_data: img_url
                 }, function (data, status) {
                     console.log(data)
                     if (!data || data.length == 0) {
-                        // errorMsg_display("Can't detect eyes or face, try another image")
+                        // null value returned
                         return
                     }
 
+                    $(".clasification_digit_box").removeClass("clasification_digit_box_active")
+
+                    for (var i = 0; i <= data.length; i++) {
+                        $(".clasification_digit_box[data_content='" + data[i] + "']").addClass('clasification_digit_box_active')
+                    }
+
                 }).fail(() => {
-                    console.log("Sever Error")
+                    console.log("Sever Error!")
                 })
 
             } catch (e) {
-                // errorMsg_display("Upload a proper image")
+                console.log("Server Error!")
             }
+            old_url = img_url
         }
     }
 
@@ -93,8 +99,8 @@ $(document).ready(() => {
         if (!isMouseDown) return;
 
         const x = event.offsetX;
-        // const y = event.offsetY + 50;
-        const y = event.offsetY;
+        const y = event.offsetY + 50;
+        // const y = event.offsetY;
 
         context.lineTo(x, y);
         context.stroke();
@@ -114,6 +120,8 @@ $(document).ready(() => {
     $(".clear_canvas").click(() => {
         context.clearRect(0, 0, paintCanvas.width, paintCanvas.height);
         prvw_img()
+
+        $(".clasification_digit_box").removeClass("clasification_digit_box_active")
     })
 
     // $(".down_btn").click(() => {

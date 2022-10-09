@@ -94,7 +94,6 @@ def classify_image(img_url):
         else:
             pred = __model.predict(crop_img)
         num_pred.append(np.argmax(pred))
-    print(num_pred)
     return num_pred
 
 
