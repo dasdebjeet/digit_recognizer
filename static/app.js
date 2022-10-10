@@ -1,11 +1,37 @@
 $(document).ready(() => {
+    (function (url) {
+        var image = new Image();
+
+        image.onload = function () {
+            // Inside here we already have the dimensions of the loaded image
+            var style = [
+                // Hacky way of forcing a middle/center anchor point for the image
+                'padding: ' + this.height * .5 + 'px ' + this.width * .5 + 'px;',
+                'background-size: ' + this.width + 'px ' + this.height + 'px;',
+                'background: url(' + url + ') no-repeat;'
+            ].join(' ');
+
+            // notice the space after %c
+            console.log('%c ', style);
+        };
+
+        // Actually loads the image
+        image.src = url;
+    })("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAS0AAABbCAYAAAAm79OGAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAMrSURBVHgB7dqhbxNRAMfxNzIwQCBBIsCgMCwIFAlYHP8AY8HWIMFsGCZB4FmQGByOjGQKiSPBzOBHQE2stMlIuq0t191ddz/2+STP7K6vl97tm3u9lgIQZGEwLu8PgC7Y2R9jDaO1MRjLBaAbXgzG2qSNZwpAENECoogWEEW0gCiiBUQRLSCKaAFRRAuI4selQKf01pZKb3Vp7LZ+KSvutIAoogVEES0gimgBUUQLiCJaQBTRAqKIFhBFtIAoogVEES0gimgBUUQLiCJaQBTRAqKIFhBFtIAoogVEES0gimgBUUQLiCJaQBTRAqIsljlb37hbHi7fmLrPs5Wt8mHje+V5Zt1/1vet8l5NzT/ra+c5T5XXznOeKnPWuU4Sr4emroEuc6cFRBEtIMrcl4ejJt2mvtt8UNbf3p26TxWHb+OfPd4qbRnO/Xf+WZckB+Zp6DOpswSb9FkN9/nXMYzO8/Lpl/Jm7f3RY3t1Z6Z5mjp3w/ds4rqqYvR6OHAMFZZvB+apcZxt/3+dlBONFv+3Xzu75cf276N//7lb4LgsD4Eop/JOq6mnWm0YXcKMGh7bo/sfS1XT5jn2cuNxu0vsKuqcu9F9qix1m1JnqVvnPDZ1LXWNOy0gimgBUU7l8nDSk74uOLyEOe6xtbHkqfNUtClNnbvD84xbRtXR1NPPpp4edu06r8OdFhDFTx5ozcVL58rV6xfG/h2O60Sj1fbTjSpLgLZ/dFrHpOOv++Ro3Gub+qwOz/P89Z2x8/QefpppnjbPXdtfF7T1BHCmHy3PeC114auASSwPgSiiBURZGIyNwVguAB3QW1sqvdWlsdv6pay40wKiiBYQRbSAKKIFRBEtIIpoAVFEC4giWkAU0QKiiBYQRbSAKKIFRBEtIIpoAVFEC4giWkAU0QKiiBYQRbSAKKIFRBEtIIpoAVFEC4giWkAU0QKiiBYQRbSAKKIFRBEtIIpoAVEWB2N7MD6P23jz9pVb5y+evVwA5uTqtQtTty9M2/it/2SzlP69AtAB/VJWLA+BKKIFRBEtIIpoAVFEC4giWkAU0QKiLE7buFf2vp7RNaAzFrb/APXdpvxFBbD3AAAAAElFTkSuQmCC");
+
+
     const paintCanvas = document.querySelector('.canvas');
     const context = paintCanvas.getContext('2d');
 
 
-    // paintCanvas.width = window.innerWidth - 630
-    paintCanvas.width = window.innerHeight - 180
-    paintCanvas.height = window.innerHeight - 180
+    if (window.innerHeight > 600) {
+        // paintCanvas.width = window.innerWidth - 630
+        paintCanvas.width = window.innerHeight - 180
+        paintCanvas.height = window.innerHeight - 180
+    } else {
+        paintCanvas.width = window.innerHeight - 50
+        paintCanvas.height = window.innerHeight - 50
+    }
 
     // context.strokeStyle = "#808080"
     context.lineCap = 'round';
@@ -70,9 +96,10 @@ $(document).ready(() => {
                 $.post("http://127.0.0.1:5000/classify_image", {
                     image_data: img_url
                 }, function (data, status) {
-                    console.log(data)
+                    // console.log(data)
                     if (!data || data.length == 0) {
                         // null value returned
+                        console.log("Null value recived!")
                         return
                     }
 

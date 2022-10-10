@@ -1,5 +1,8 @@
-# <strong style="color:#ffffff;">Digit</strong>Recognizer.
-Digit recognizer is a application for recognization of handwritten digits using Deep Learning, check it out... 👇👇<br>
+<!-- # <strong style="color:#ffffff;">Digit</strong>Recognizer. -->
+<img src="./assets/app_logo.png" alt="demo" width="200">
+<br>
+
+Digit recognizer is an application for the recognization of handwritten digits using Deep Learning, check it out... 👇👇<br>
 Made in python, HTML, CSS, jquery, and ajax.
 <br><br>
 
@@ -25,7 +28,7 @@ In the root directory. After the modules have been installed you can run the pro
 	python main.py
 
 <br>
-<img src="./app_how_use.png" alt="demo">
+<img src="./assets/app_how_use.png" alt="demo">
 <br>
 
 **Made with </> by <a href="https://dasdebjeet.github.io">DebjeetDas</a>. © 2022 all rights reserved.**<br>
