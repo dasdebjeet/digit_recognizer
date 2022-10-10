@@ -1,5 +1,5 @@
 <!-- # <strong style="color:#ffffff;">Digit</strong>Recognizer. -->
-<img src="./assets/app_logo.png" alt="demo" width="200">
+<img src="./assets/app_logo.png" alt="demo" width="300">
 <br>
 
 Digit recognizer is an application for the recognization of handwritten digits using Deep Learning, check it out... 👇👇<br>
