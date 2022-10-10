@@ -2,7 +2,7 @@
 <img src="./assets/app_logo.png" alt="demo" width="300">
 <br>
 
-Digit recognizer is an application for the recognization of handwritten digits using Deep Learning, check it out... 👇👇<br>
+Digit recognizer is an application for the recognization of handwritten digits using Deep Learning, check it out.. 👇👇<br>
 Made in python, HTML, CSS, jquery, and ajax.
 <br><br>
 
