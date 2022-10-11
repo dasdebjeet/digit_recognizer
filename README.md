@@ -2,13 +2,13 @@
 <img src="./assets/app_logo.png" alt="demo" width="300">
 <br>
 
-Digit recognizer is an application for the recognization of handwritten digits using Deep Learning, check it out.. 👇👇<br>
+Digit recognition using Deep Learning, check it out... 👇👇<br>
 Made in python, HTML, CSS, jquery, and ajax.
-<br><br>
 
+DIGITRECOGNIZER is an application for the recognization of handwritten digits using Deep Learning. In this application self-made handwritten datasets have been used to fit the neural network model and predict the digit.
+
+<br>
 <!-- Website: https://dasdebjeet.github.io -->
-<!-- <br> -->
-<!-- <br> -->
 
 
 ## How to setup
